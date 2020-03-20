@@ -132,32 +132,64 @@ void MainWindow::on_button_1_clicked()
 
 void forecast (QTableWidget *table, QCustomPlot *plot) {
     int rows = table->rowCount();
-    double l[100];
-    double t[100];
+    double l[rows];
+    double t[rows];
     double k = 0.8;
     double k1 = 0.2;
     double b = 0.9;
 
-    double forecast[12];
+    double final[rows + 12];
 
     for (int i = 0; i < rows; i++) {
-        double yt = table->item(i, 1)->text().toDouble();
+        final[i] = table->item(i, 1)->text().toDouble();
         if (i == 0) {
-            l[i+1] = yt;
+            l[i+1] = final[i];
             t[i+1] = 0;
         }
         else {
-            l[i+1] = k * yt + k1 * (l[i-1] + t[i-1]);
+            l[i+1] = k * final[i] + k1 * (l[i-1] + t[i-1]);
             t[i+1] = b * (l[i+1] - l[i]) + 0.1 * t[i];
         }
     }
 
     for (int i = 1; i <= 12; i++) {
-        forecast[i] = l[rows] + i * t[rows];
+        final[rows + i] = l[rows] + i * t[rows];
     }
+
 }
 
 void MainWindow::on_pushButton_7_clicked()
 {
+    forecast(ui->tableWidget_6, ui->widget_6);
+}
 
+void MainWindow::on_pushButton_8_clicked()
+{
+    forecast(ui->tableWidget_7, ui->widget_7);
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    forecast(ui->tableWidget, ui->widget);
+}
+
+void MainWindow::on_pushButton_3_clicked()
+{
+    forecast(ui->tableWidget_3, ui->widget_2);
+}
+
+
+void MainWindow::on_pushButton_4_clicked()
+{
+    forecast(ui->tableWidget_8, ui->widget_3);
+}
+
+void MainWindow::on_pushButton_5_clicked()
+{
+    forecast(ui->tableWidget_4, ui->widget_4);
+}
+
+void MainWindow::on_pushButton_6_clicked()
+{
+    forecast(ui->tableWidget_5, ui->widget_5);
 }
