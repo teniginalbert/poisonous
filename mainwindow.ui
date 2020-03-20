@@ -1,0 +1,1357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="button_1">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>60</y>
+      <width>201</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Ввод данных из выбранного файла</string>
+    </property>
+   </widget>
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>110</y>
+      <width>781</width>
+      <height>471</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>5</number>
+    </property>
+    <widget class="QWidget" name="tab">
+     <attribute name="title">
+      <string>Сульфаты</string>
+     </attribute>
+     <widget class="QTableWidget" name="tableWidget">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>161</width>
+        <height>391</height>
+       </rect>
+      </property>
+      <row>
+       <property name="text">
+        <string>Январь</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Февраль</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Март</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Апрель</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Май</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Июнь</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Июль</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Август</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Сентябрь</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Октябрь</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Ноябрь</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Декабрь</string>
+       </property>
+      </row>
+      <column>
+       <property name="text">
+        <string>Концентрация</string>
+       </property>
+      </column>
+     </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>380</x>
+        <y>0</y>
+        <width>171</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>График изменения концентрации</string>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::PlainText</enum>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton">
+      <property name="geometry">
+       <rect>
+        <x>390</x>
+        <y>240</y>
+        <width>161</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Спрогнозировать</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>270</y>
+        <width>131</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Информация о веществе</string>
+      </property>
+     </widget>
+     <widget class="QCustomPlot" name="widget" native="true">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>20</y>
+        <width>581</width>
+        <height>211</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_14">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>240</y>
+        <width>51</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_34">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>240</y>
+        <width>21</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Max</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_33">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>250</y>
+        <width>71</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>ПДК 500 мг/л</string>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="plainTextEdit_2">
+      <property name="geometry">
+       <rect>
+        <x>263</x>
+        <y>290</y>
+        <width>481</width>
+        <height>141</height>
+       </rect>
+      </property>
+      <property name="plainText">
+       <string>Сульфаты.
+Источник: процессы химического выветривания и растворения серосодержащих минералов. Значительно поступают в процессе отмирания организмов, окисления наземных и водных веществ растительного и животного происхождения, большое содержание в шахтных водах и в промышленных стоках пароизводств, а так же в сточных водах.
+Повышенное содержание сказывается на вкусовые качества воды, оказывает физиологическое воздействие на человека, в сочетании с кальцием образуют прочную накипь, что ограничевает и промышленное и хозяйственое использование.
+</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_3">
+     <attribute name="title">
+      <string>Хлориды</string>
+     </attribute>
+     <widget class="QTableWidget" name="tableWidget_3">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>161</width>
+        <height>391</height>
+       </rect>
+      </property>
+      <row>
+       <property name="text">
+        <string>Январь</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Февраль</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Март</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Апрель</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Май</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Июнь</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Июль</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Август</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Сентябрь</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Октябрь</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Ноябрь</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Декабрь</string>
+       </property>
+      </row>
+      <column>
+       <property name="text">
+        <string>Концентрация</string>
+       </property>
+      </column>
+     </widget>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>390</x>
+        <y>0</y>
+        <width>171</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>График изменения концентрации</string>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::PlainText</enum>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_3">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>240</y>
+        <width>161</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Спрогнозировать</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_6">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>260</y>
+        <width>131</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Информация о веществе </string>
+      </property>
+     </widget>
+     <widget class="QCustomPlot" name="widget_2" native="true">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>20</y>
+        <width>581</width>
+        <height>211</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_13">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>240</y>
+        <width>51</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_31">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>250</y>
+        <width>71</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>ПДК 350 мг/л</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_32">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>240</y>
+        <width>21</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Max</string>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="plainTextEdit">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>290</y>
+        <width>381</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <property name="plainText">
+       <string>Хлориды.
+Первичный источник: магматические пророды.
+Концентрация возрастает из-за хозяйственно-бытовых сточных вод.
+Повышенное содержание влияет на вкусовые качества, делают ее малопригодной для питьевого водоснабжения и ограничивают применение для многих технических и хозяйственных целей.</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_2">
+     <attribute name="title">
+      <string>Магний</string>
+     </attribute>
+     <widget class="QTableWidget" name="tableWidget_8">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>161</width>
+        <height>391</height>
+       </rect>
+      </property>
+      <row>
+       <property name="text">
+        <string>Январь</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Февраль</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Март</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Апрель</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Май</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Июнь</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Июль</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Август</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Сентябрь</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Октябрь</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Ноябрь</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Декабрь</string>
+       </property>
+      </row>
+      <column>
+       <property name="text">
+        <string>Концентрация</string>
+       </property>
+      </column>
+     </widget>
+     <widget class="QLabel" name="label_7">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>0</y>
+        <width>171</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>График изменения концентрации</string>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::PlainText</enum>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_4">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>240</y>
+        <width>161</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Спрогнозировать</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_9">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>270</y>
+        <width>131</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Информация о веществе</string>
+      </property>
+     </widget>
+     <widget class="QCustomPlot" name="widget_3" native="true">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>20</y>
+        <width>581</width>
+        <height>211</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_12">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>240</y>
+        <width>51</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_29">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>260</y>
+        <width>71</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>ПДК 20 мг/л</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_30">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>240</y>
+        <width>21</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Max</string>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="plainTextEdit_3">
+      <property name="geometry">
+       <rect>
+        <x>303</x>
+        <y>290</y>
+        <width>411</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="plainText">
+       <string>Магний.
+В поверхностные воды поступает в процессе выветривания и растворения долмитов и других минералов. Значительные количества поступают со сточными водами металлургических, силикатных, текстильных и других предприятий.</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_4">
+     <attribute name="title">
+      <string>Нитраты</string>
+     </attribute>
+     <widget class="QTableWidget" name="tableWidget_4">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>161</width>
+        <height>391</height>
+       </rect>
+      </property>
+      <row>
+       <property name="text">
+        <string>Январь</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Февраль</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Март</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Апрель</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Май</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Июнь</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Июль</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Август</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Сентябрь</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Октябрь</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Ноябрь</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Декабрь</string>
+       </property>
+      </row>
+      <column>
+       <property name="text">
+        <string>Концентрация</string>
+       </property>
+      </column>
+     </widget>
+     <widget class="QLabel" name="label_10">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>0</y>
+        <width>171</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>График изменения концентрации</string>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::PlainText</enum>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_5">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>240</y>
+        <width>161</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Спрогнозировать</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_12">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>220</y>
+        <width>131</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Информация о веществе</string>
+      </property>
+     </widget>
+     <widget class="QCustomPlot" name="widget_4" native="true">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>20</y>
+        <width>581</width>
+        <height>211</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_27">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>260</y>
+        <width>71</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>ПДК 45 мг/л</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_28">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>240</y>
+        <width>21</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Max</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_11">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>240</y>
+        <width>51</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="plainTextEdit_4">
+      <property name="geometry">
+       <rect>
+        <x>273</x>
+        <y>290</y>
+        <width>481</width>
+        <height>131</height>
+       </rect>
+      </property>
+      <property name="plainText">
+       <string>Нитраты.
+Источники: 1) ввиду химических процессов под воздействием нитрифицирующих бактерий;
+2) атмосферными осадками при разрядах с образованием оксида азота;
+3) промышленными и хозяйственно-бытовыми сточными водами;
+4)со стоком с с/х угодий, где применялись азотные удобрения.
+Способны вызвать отравление. Накапливаясь в тканях организма, вступают в реакцию с гемоглобином крови и вызывают кислородное голодание.
+</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_5">
+     <attribute name="title">
+      <string>Нефтяные углеводороды</string>
+     </attribute>
+     <widget class="QTableWidget" name="tableWidget_5">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>161</width>
+        <height>391</height>
+       </rect>
+      </property>
+      <row>
+       <property name="text">
+        <string>Январь</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Февраль</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Март</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Апрель</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Май</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Июнь</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Июль</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Август</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Сентябрь</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Октябрь</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Ноябрь</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Декабрь</string>
+       </property>
+      </row>
+      <column>
+       <property name="text">
+        <string>Концентрация</string>
+       </property>
+      </column>
+     </widget>
+     <widget class="QLabel" name="label_13">
+      <property name="geometry">
+       <rect>
+        <x>380</x>
+        <y>0</y>
+        <width>171</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>График изменения концентрации</string>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::PlainText</enum>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_6">
+      <property name="geometry">
+       <rect>
+        <x>380</x>
+        <y>240</y>
+        <width>161</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Спрогнозировать</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_15">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>270</y>
+        <width>131</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Информация о веществе</string>
+      </property>
+     </widget>
+     <widget class="QCustomPlot" name="widget_5" native="true">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>20</y>
+        <width>581</width>
+        <height>211</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_25">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>260</y>
+        <width>71</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>ПДК 0.3 мг/л</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_26">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>240</y>
+        <width>21</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Max</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_10">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>240</y>
+        <width>51</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="plainTextEdit_5">
+      <property name="geometry">
+       <rect>
+        <x>283</x>
+        <y>300</y>
+        <width>431</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="plainText">
+       <string>Нефтепродкты(углеводороды)
+Источники: разливы нефти при авариях нефтеналивных судов, со сточными водами нефтегазовой промышленности, со сточными водами химических, металлургических и других производств и других производств, с бытовыми стоками.
+Растворенные нефтепродукты окзывают неблагоприятное воздействие на растительный и животный мир, на здоровье человека.</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_6">
+     <attribute name="title">
+      <string>Фтор</string>
+     </attribute>
+     <widget class="QTableWidget" name="tableWidget_6">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>161</width>
+        <height>391</height>
+       </rect>
+      </property>
+      <column>
+       <property name="text">
+        <string>Концентрация</string>
+       </property>
+      </column>
+     </widget>
+     <widget class="QLabel" name="label_16">
+      <property name="geometry">
+       <rect>
+        <x>390</x>
+        <y>0</y>
+        <width>171</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>График изменения концентрации</string>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::PlainText</enum>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_7">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>240</y>
+        <width>161</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Спрогнозировать</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_18">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>270</y>
+        <width>131</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Информация о веществе</string>
+      </property>
+     </widget>
+     <widget class="QCustomPlot" name="widget_6" native="true">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>20</y>
+        <width>581</width>
+        <height>211</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_23">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>260</y>
+        <width>71</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>ПДК 180 мг/л</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_24">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>240</y>
+        <width>21</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Max</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_9">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>240</y>
+        <width>51</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="plainTextEdit_7">
+      <property name="geometry">
+       <rect>
+        <x>273</x>
+        <y>300</y>
+        <width>451</width>
+        <height>121</height>
+       </rect>
+      </property>
+      <property name="plainText">
+       <string>Кальций.
+Источники: процессы химического выветривания и растворения минералов осадочных и метаморфических пород. Поступают со стоками металлургических, химических, стекольных и силикатных производств а такде при стоке с с/х где применялись минеральные удобрения.
+Образует в поверхностных водах довольно устойчивые пресыщенные растворы. Являются причиной прочной накими, что ограничевает промышленное и хозяйственное применение.</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_7">
+     <attribute name="title">
+      <string>Фенолы</string>
+     </attribute>
+     <widget class="QTableWidget" name="tableWidget_7">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>161</width>
+        <height>391</height>
+       </rect>
+      </property>
+      <row>
+       <property name="text">
+        <string>Январь</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Февраль</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Март</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Апрель</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Май</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Июнь</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Июль</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Август</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Сентябрь</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Октябрь</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Ноябрь</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Декабрь</string>
+       </property>
+      </row>
+      <column>
+       <property name="text">
+        <string>Концентрация</string>
+       </property>
+      </column>
+     </widget>
+     <widget class="QLabel" name="label_19">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>0</y>
+        <width>171</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>График изменения концентрации</string>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::PlainText</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_20">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>240</y>
+        <width>21</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Max</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_8">
+      <property name="geometry">
+       <rect>
+        <x>380</x>
+        <y>240</y>
+        <width>161</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Спрогнозировать</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_21">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>270</y>
+        <width>131</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Информация о веществе</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_8">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>240</y>
+        <width>51</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QCustomPlot" name="widget_7" native="true">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>20</y>
+        <width>581</width>
+        <height>211</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_22">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>260</y>
+        <width>81</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>ПДК 0.001 мг/л</string>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="plainTextEdit_6">
+      <property name="geometry">
+       <rect>
+        <x>303</x>
+        <y>300</y>
+        <width>381</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="plainText">
+       <string>Фенолы.
+Источники: сброс фенольных вод. Являются одним из наиболее распространекнных загрязнений, поступающих со стоками нефтеперерабатывающей, сланцеобрабатывающей, лесохимической, и других промышленностей.
+Фенольные воды оказывают отрицательное влияние на живые организмы</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="pushButton_2">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>30</y>
+      <width>121</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Выбор файла</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>271</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QCustomPlot</class>
+   <extends>QWidget</extends>
+   <header>qcustomplot.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
