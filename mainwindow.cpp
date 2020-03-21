@@ -9,25 +9,49 @@
 #include <QJsonObject>
 #include <QJsonValue>
 
-void draw (QTableWidget *table, QJsonObject obj, QCustomPlot *plot, QLineEdit *pdk, QString name) {
-    QJsonValue value = obj.value(QString(name));
-    // qWarning() << "QJsonValue: " << value;
+void draw (QTableWidget *table, QJsonObject sett2, QCustomPlot *plot, QLineEdit *pdk, QString name) {
+
+    QJsonValue value = sett2.value(name);
     QJsonArray item = value.toArray();
     int length = item.count();
-    // qWarning() << "QJsonArray: " << item;
-    double arr[length];
+    double arr[length][3];
+
     for (int i = 0; i < length; i++) {
-        arr[i] = item[i].toDouble();
+        arr[i][0] = item[i].toObject().value("concentration").toDouble();
+        arr[i][1] = item[i].toObject().value("month").toDouble();
+        arr[i][2] = item[i].toObject().value("year").toDouble();
     }
 
     for (int k = 0; k < length; k++) {
-        QString text = QString::number(arr[k],'g', 6);
-        QTableWidgetItem *item = table->item(k, 0);
-        if(item && item != nullptr)
-            item->setText(text);
+        QString concentration = QString::number(arr[k][0],'g', 6);
+        QString year = QString::number(arr[k][2], 'g', 6);
+        QString month = QString::number(arr[k][1], 'g', 6);
+
+        QTableWidgetItem *item_concentration = table->item(k, 0);
+        QTableWidgetItem *item_year = table->item(k, 2);
+        QTableWidgetItem *item_month = table->item(k, 1);
+
+        if(item_concentration && item_concentration != nullptr)
+            item_concentration->setText(concentration);
         else
         {
-            table->setItem(k, 0, (new QTableWidgetItem(text)));
+            table->setItem(k, 0, (new QTableWidgetItem(concentration)));
+           // ui->tableWidget_7->item(k, 0)->setText(text);
+        }
+
+        if(item_year && item_year != nullptr)
+            item_year->setText(year);
+        else
+        {
+            table->setItem(k, 2, (new QTableWidgetItem(year)));
+           // ui->tableWidget_7->item(k, 0)->setText(text);
+        }
+
+        if(item_month && item_month != nullptr)
+            item_month->setText(month);
+        else
+        {
+            table->setItem(k, 1, (new QTableWidgetItem(month)));
            // ui->tableWidget_7->item(k, 0)->setText(text);
         }
     }
@@ -43,7 +67,7 @@ void draw (QTableWidget *table, QJsonObject obj, QCustomPlot *plot, QLineEdit *p
         x[i] = X;
         QTableWidgetItem *item = table->item(i, 0);
         if (item && item != nullptr)
-            y[i] = table->item(i, 0)->text().toDouble();
+            y[i] = item->text().toDouble();
         else
             y[i] = 0;
         i++;
@@ -61,8 +85,8 @@ void draw (QTableWidget *table, QJsonObject obj, QCustomPlot *plot, QLineEdit *p
     double minY = y[0], maxY = y[0];
     for (int i = 1; i < n; i++)
     {
-        if (y[i]<minY) minY = y[i];
-        if (y[i]>maxY) maxY = y[i];
+        if (y[i] < minY) minY = y[i];
+        if (y[i] > maxY) maxY = y[i];
     }
 
     pdk->setText(QString::number(maxY, 'g', 6));
@@ -141,7 +165,7 @@ void forecast (QTableWidget *table, QCustomPlot *plot) {
     double final[rows + 12];
 
     for (int i = 0; i < rows; i++) {
-        final[i] = table->item(i, 1)->text().toDouble();
+        final[i] = table->item(i, 2)->text().toDouble();
         if (i == 0) {
             l[i+1] = final[i];
             t[i+1] = 0;
