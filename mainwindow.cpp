@@ -11,6 +11,23 @@
 
 void draw (QTableWidget *table, QJsonObject sett2, QCustomPlot *plot, QLineEdit *pdk, QString name) {
 
+    double pdk_value = 0.0;
+
+    if (name == "Сульфаты")
+        pdk_value = 500.0;
+    else if (name == "Хлориды")
+        pdk_value = 350.0;
+    else if (name == "Магний")
+        pdk_value = 20.0;
+    else if (name == "Нитраты")
+        pdk_value = 45.0;
+    else if (name == "Нефтяные углеводороды")
+        pdk_value = 0.3;
+    else if (name == "Фтор")
+        pdk_value = 180.0;
+    else if (name == "Фенолы")
+        pdk_value = 0.001;
+
     QJsonValue value = sett2.value(name);
     QJsonArray item = value.toArray();
     int length = item.count();
@@ -72,6 +89,11 @@ void draw (QTableWidget *table, QJsonObject sett2, QCustomPlot *plot, QLineEdit 
             y[i] = 0;
         i++;
     }
+    QVector <double> pdk_x(2), pdk_y(2);
+    pdk_x[0] = min;
+    pdk_x[1] = max;
+    pdk_y[0] = pdk_value;
+    pdk_y[1] = pdk_value;
 
     plot->xAxis->setLabel("Месяцы");
     plot->yAxis->setLabel("Концентрация");
@@ -100,6 +122,10 @@ void draw (QTableWidget *table, QJsonObject sett2, QCustomPlot *plot, QLineEdit 
     plot->addGraph();
     plot->graph(1)->setData(max_x, max_y);
     plot->graph(1)->setPen(QColor(255, 0, 0, 255));
+
+    plot->addGraph();
+    plot->graph(2)->setData(pdk_x, pdk_y);
+    plot->graph(2)->setPen(QColor(176, 85, 0, 255));
 
     maxY = maxY * 1.1;
     minY = minY / 1.1;
@@ -154,8 +180,9 @@ void MainWindow::on_button_1_clicked()
    }
 }
 
-void forecast (QTableWidget *table, QCustomPlot *plot) {
+void forecast (QTableWidget *table, QCustomPlot *plot, double pdk) {
     int rows = table->rowCount();
+    qDebug() << rows;
     double l[rows];
     double t[rows];
     double k = 0.8;
@@ -165,55 +192,121 @@ void forecast (QTableWidget *table, QCustomPlot *plot) {
     double final[rows + 12];
 
     for (int i = 0; i < rows; i++) {
-        final[i] = table->item(i, 2)->text().toDouble();
+        final[i] = table->item(i, 0)->text().toDouble();
         if (i == 0) {
-            l[i+1] = final[i];
-            t[i+1] = 0;
+            l[i] = final[i];
+            t[i] = 0;
         }
         else {
-            l[i+1] = k * final[i] + k1 * (l[i-1] + t[i-1]);
-            t[i+1] = b * (l[i+1] - l[i]) + 0.1 * t[i];
+            l[i] = k * final[i-1] + k1 * (l[i-1] + t[i-1]);
+            t[i] = b * (l[i] - l[i-1]) + 0.1 * t[i-1];
         }
     }
 
-    for (int i = 1; i <= 12; i++) {
-        final[rows + i] = l[rows] + i * t[rows];
+    for (int i = 0; i < 12; i++) {
+        final[rows + i] = l[rows - 1] + i * t[rows - 1];
     }
 
+    double min = 1;
+    double max = rows + 12;
+
+    QVector <double> x(rows), y(rows), x1(13), y1(13);
+
+    int i = 0;
+    for (double X = min; X <= rows; X++) {
+        x[i] = X;
+        y[i] = final[i];
+        i++;
+    }
+
+    plot->xAxis->setLabel("Месяцы");
+    plot->yAxis->setLabel("Концентрация");
+
+    plot->addGraph();
+    plot->graph(0)->setData(x, y);
+
+    x1[0] = rows;
+    y1[0] = y[rows-1];
+    i = 1;
+    for (double X = rows + 1;  X <= rows + 12; X++) {
+        x1[i] = X;
+        y1[i] = final[rows + i - 1];
+        i++;
+    }
+
+    plot->addGraph();
+    plot->graph(1)->setData(x1, y1);
+    plot->graph(1)->setPen(QColor(0, 255, 0, 255));
+
+    plot->xAxis->setRange(min, max);
+    plot->xAxis->setTicker(QSharedPointer<QCPAxisTickerFixed>(new QCPAxisTickerFixed));
+
+    double minY = y[0], maxY = y[0];
+    for (int i = 0; i < rows; i++)
+    {
+        if (y[i] < minY) minY = y[i];
+        if (y[i] > maxY) maxY = y[i];
+    }
+
+    QVector <double> max_x(2), max_y(2);
+    max_x[0] = min;
+    max_x[1] = max;
+    max_y[0] = maxY;
+    max_y[1] = maxY;
+
+    QVector <double> pdk_x(2), pdk_y(2);
+    pdk_x[0] = min;
+    pdk_x[1] = max;
+    pdk_y[0] = pdk;
+    pdk_y[1] = pdk;
+
+    plot->addGraph();
+    plot->graph(2)->setData(max_x, max_y);
+    plot->graph(2)->setPen(QColor(255, 0, 0, 255));
+
+    plot->addGraph();
+    plot->graph(3)->setData(pdk_x, pdk_y);
+    plot->graph(3)->setPen(QColor(176, 85, 0, 255));
+
+    maxY = maxY * 1.1;
+    minY = minY / 1.1;
+
+    plot->yAxis->setRange(minY, maxY);
+
+    plot->replot();
 }
 
-void MainWindow::on_pushButton_7_clicked()
+void MainWindow::on_pushButton_7_clicked()  // фтор
 {
-    forecast(ui->tableWidget_6, ui->widget_6);
+    forecast(ui->tableWidget_6, ui->widget_6, 180.0);
 }
 
-void MainWindow::on_pushButton_8_clicked()
+void MainWindow::on_pushButton_8_clicked() // фенолы
 {
-    forecast(ui->tableWidget_7, ui->widget_7);
+    forecast(ui->tableWidget_7, ui->widget_7, 0.001);
 }
 
-void MainWindow::on_pushButton_clicked()
+void MainWindow::on_pushButton_clicked() // сульфаты
 {
-    forecast(ui->tableWidget, ui->widget);
+    forecast(ui->tableWidget, ui->widget, 500.0);
 }
 
-void MainWindow::on_pushButton_3_clicked()
+void MainWindow::on_pushButton_3_clicked() // хлориды
 {
-    forecast(ui->tableWidget_3, ui->widget_2);
+    forecast(ui->tableWidget_3, ui->widget_2, 350.0);
 }
 
-
-void MainWindow::on_pushButton_4_clicked()
+void MainWindow::on_pushButton_4_clicked() // магний
 {
-    forecast(ui->tableWidget_8, ui->widget_3);
+    forecast(ui->tableWidget_8, ui->widget_3, 20.0);
 }
 
-void MainWindow::on_pushButton_5_clicked()
+void MainWindow::on_pushButton_5_clicked()  //нитраты
 {
-    forecast(ui->tableWidget_4, ui->widget_4);
+    forecast(ui->tableWidget_4, ui->widget_4, 45.0);
 }
 
-void MainWindow::on_pushButton_6_clicked()
+void MainWindow::on_pushButton_6_clicked()  // нефть
 {
-    forecast(ui->tableWidget_5, ui->widget_5);
+    forecast(ui->tableWidget_5, ui->widget_5, 0.3);
 }
