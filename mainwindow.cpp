@@ -17,14 +17,14 @@ void draw (QTableWidget *table, QJsonObject sett2, QCustomPlot *plot, QLineEdit 
         pdk_value = 500.0;
     else if (name == "Хлориды")
         pdk_value = 350.0;
-    else if (name == "Магний")
-        pdk_value = 20.0;
+    else if (name == "Медь")
+        pdk_value = 1.0;
     else if (name == "Нитраты")
         pdk_value = 45.0;
     else if (name == "Нефтяные углеводороды")
         pdk_value = 0.3;
-    else if (name == "Фтор")
-        pdk_value = 180.0;
+    else if (name == "Железо")
+        pdk_value = 0.3;
     else if (name == "Фенолы")
         pdk_value = 0.001;
 
@@ -171,10 +171,10 @@ void MainWindow::on_button_1_clicked()
         QJsonObject sett2 = d.object();
 
         draw(ui->tableWidget_7, sett2, ui->widget_7, ui->lineEdit_8, "Фенолы");
-        draw(ui->tableWidget_6, sett2, ui->widget_6, ui->lineEdit_9, "Фтор");
+        draw(ui->tableWidget_6, sett2, ui->widget_6, ui->lineEdit_9, "Железо");
         draw(ui->tableWidget_5, sett2, ui->widget_5, ui->lineEdit_10, "Нефтяные углеводороды");
         draw(ui->tableWidget_4, sett2, ui->widget_4, ui->lineEdit_11, "Нитраты");
-        draw(ui->tableWidget_8, sett2, ui->widget_3, ui->lineEdit_12, "Магний");
+        draw(ui->tableWidget_8, sett2, ui->widget_3, ui->lineEdit_12, "Медь");
         draw(ui->tableWidget_3, sett2, ui->widget_2, ui->lineEdit_13, "Хлориды");
         draw(ui->tableWidget,   sett2, ui->widget,   ui->lineEdit_14, "Сульфаты");
    }
@@ -276,9 +276,9 @@ void forecast (QTableWidget *table, QCustomPlot *plot, double pdk) {
     plot->replot();
 }
 
-void MainWindow::on_pushButton_7_clicked()  // фтор
+void MainWindow::on_pushButton_7_clicked()  // железо
 {
-    forecast(ui->tableWidget_6, ui->widget_6, 180.0);
+    forecast(ui->tableWidget_6, ui->widget_6, 0.3);
 }
 
 void MainWindow::on_pushButton_8_clicked() // фенолы
@@ -296,9 +296,9 @@ void MainWindow::on_pushButton_3_clicked() // хлориды
     forecast(ui->tableWidget_3, ui->widget_2, 350.0);
 }
 
-void MainWindow::on_pushButton_4_clicked() // магний
+void MainWindow::on_pushButton_4_clicked() // медь
 {
-    forecast(ui->tableWidget_8, ui->widget_3, 20.0);
+    forecast(ui->tableWidget_8, ui->widget_3, 1.0);
 }
 
 void MainWindow::on_pushButton_5_clicked()  //нитраты
